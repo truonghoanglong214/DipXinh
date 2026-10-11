@@ -70,9 +70,9 @@ Main branch:
 - main: stable integration branch
 
 Working branches:
-- feat/<task-id>-description
-- fix/<task-id>-description
-- chore/<task-id>-description
+- feat/<feat/B01-02-spring-boot-setup>-description
+- fix/<feat/B01-02-spring-boot-setup>-description
+- chore/<feat/B01-02-spring-boot-setup>-description
 
 Commit message convention:
 - feat: new feature
