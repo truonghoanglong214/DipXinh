@@ -93,14 +93,23 @@ export const AppHeader: FC<AppHeaderProps> = ({
       <button
         type="button"
         onClick={() => onViewChange('marketing')}
-        className="group shrink-0 text-left"
+        className="group flex shrink-0 items-center gap-2.5 text-left sm:gap-3"
         aria-label="Về trang giới thiệu DịpXinh"
       >
-        <span className="block font-display text-[1.9rem] font-medium italic leading-none tracking-[-0.025em] text-[#302824] transition-colors group-hover:text-[#713F4B] sm:text-[2.15rem]">
-          DịpXinh
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center sm:h-12 sm:w-12">
+          <img
+            src="/brand/dipxinh-mark.png"
+            alt=""
+            className="h-full w-full object-contain transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-[1.04]"
+          />
         </span>
-        <span className="mt-1 block text-[8px] font-medium uppercase tracking-[0.16em] text-[#A98758] sm:text-[9px] sm:tracking-[0.22em]">
-          Atelier operations
+        <span className="min-w-0">
+          <span className="block font-display text-[1.65rem] font-medium italic leading-none tracking-[-0.025em] text-[#302824] transition-colors group-hover:text-[#713F4B] sm:text-[1.95rem]">
+            DịpXinh
+          </span>
+          <span className="mt-1 block whitespace-nowrap text-[7px] font-medium uppercase tracking-[0.13em] text-[#A98758] sm:text-[9px] sm:tracking-[0.2em]">
+            Atelier operations
+          </span>
         </span>
       </button>
 
