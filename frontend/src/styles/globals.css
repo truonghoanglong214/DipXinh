@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --color-brand-canvas: #fcf9f5;
+  --color-brand-surface: #fffdfc;
+  --color-brand-ink: #302824;
+  --color-brand-muted: #756a64;
+  --color-brand-wine: #713f4b;
+  --color-brand-wine-dark: #5c303b;
+  --color-brand-rose: #c79a97;
+  --color-brand-rose-soft: #ecdad8;
+  --color-brand-gold: #a98758;
+  --color-brand-sage: #a9b2a3;
+  --color-brand-border: #e8dfd8;
+
+  --color-status-success: #38705a;
+  --color-status-warning: #966421;
+  --color-status-danger: #a94545;
+  --color-status-info: #416c82;
+}
+
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  background: var(--color-brand-canvas);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  color: var(--color-brand-ink);
+  background: var(--color-brand-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-brand-wine);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: var(--color-brand-ink);
+  background: var(--color-brand-rose-soft);
+}
+
+.font-display {
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.editorial-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-brand-wine);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.editorial-kicker::before {
+  width: 2rem;
+  height: 1px;
+  content: "";
+  background: currentColor;
+}
+
+.editorial-rule {
+  border-color: var(--color-brand-border);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The operational UI stays restrained: thin strokes, quiet depth and compact corners. */
+.dashboard-shell svg {
+  stroke-width: 1.5;
+}
+
+.dashboard-shell .font-display {
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+
+.dashboard-shell .shadow-2xs,
+.dashboard-shell .shadow-xs,
+.dashboard-shell .shadow-sm,
+.dashboard-shell .shadow-md,
+.dashboard-shell .shadow-lg,
+.dashboard-shell .shadow-xl,
+.dashboard-shell .shadow-2xl {
+  box-shadow: none;
+}
+
+.dashboard-shell .rounded-2xl {
+  border-radius: 0.625rem;
+}
+
+.dashboard-shell .rounded-xl {
+  border-radius: 0.5rem;
+}
+
+.dashboard-shell table {
+  font-variant-numeric: tabular-nums;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-rose);
+}
