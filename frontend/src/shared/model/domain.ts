@@ -14,6 +14,11 @@ export interface Shop {
   description: string;
   depositHoldHours?: number; // Thời gian giữ cọc (mặc định 60 phút)
   allowLocalDelivery?: boolean;
+  standardRentalDays?: number;
+  depositRate?: number;
+  lateFeeDaily?: number;
+  turnaroundBufferHours?: number;
+  allowIdCardDeposit?: boolean;
 }
 
 export interface ProductVariant {

@@ -1,0 +1,6 @@
+{
+  "codacy.cli.analysisMode": "disabled",
+  "codacy.cli.devMode": true,
+  "codacy.guardrails.analyzeGeneratedCode": "disabled",
+  "codacy.guardrails.instructionsFile": "manual"
+}

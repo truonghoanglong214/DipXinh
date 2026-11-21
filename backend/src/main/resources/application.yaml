@@ -1,12 +1,15 @@
-
 spring:
   application:
     name: dipxinh-backend
 
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5433/dipxinh}
     username: ${DB_USERNAME:dipxinh_app}
-    password: ${DB_PASSWORD}
+    password: ${DB_PASSWORD:dipxinh-local-db-2026}
 
   flyway:
     enabled: true
@@ -24,3 +27,17 @@ management:
   endpoint:
     health:
       show-details: never
+
+app:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:dipxinh-super-secret-key-for-development-must-be-very-long-and-secure-32bytes}
+      expiration-minutes: 15
+    cookie:
+      secure: ${COOKIE_SECURE:false}
+
+springdoc:
+  swagger-ui:
+    path: /swagger
+    operationsSorter: method
+    tagsSorter: alpha

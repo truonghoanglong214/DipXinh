@@ -38,6 +38,21 @@ interface StateData {
 
 const defaultShops: Shop[] = [
   {
+    id: 'aurora-boutique',
+    name: 'Aurora Boutique',
+    slug: 'aurora-boutique',
+    phone: '0901 234 567',
+    address: '88 Đồng Khởi, Bến Nghé, Quận 1, TP. Hồ Chí Minh',
+    plan: 'TRIAL',
+    trialEndsAt: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+    accentColor: '#713F4B',
+    logoUrl: '',
+    bannerUrl: '/images/demo/hero-fashion-rental.jpg',
+    description: 'Atelier thời trang dạ hội & áo dài lụa cao cấp Aurora.',
+    depositHoldHours: 1,
+    allowLocalDelivery: true,
+  },
+  {
     id: 'shop-1',
     name: 'Áo Dài & Dạ Hội Lụa Vàng',
     slug: 'lua-vang',
@@ -554,13 +569,51 @@ class StoreService {
     this.persist();
   }
 
-  setShop(shopId: string) {
-    this.data.currentShopId = shopId;
+  setShop(shopIdOrSlug: string) {
+    const found = this.data.shops.find((s) => s.id === shopIdOrSlug || s.slug === shopIdOrSlug);
+    if (found) {
+      this.data.currentShopId = found.id;
+    } else {
+      this.data.currentShopId = shopIdOrSlug;
+    }
     this.persist();
   }
 
   getCurrentShop(): Shop {
-    return this.data.shops.find((s) => s.id === this.data.currentShopId) || this.data.shops[0];
+    return (
+      this.data.shops.find((s) => s.id === this.data.currentShopId || s.slug === this.data.currentShopId) ||
+      this.data.shops[0]
+    );
+  }
+
+  syncBackendShops(backendShops: Array<{ id: string; name: string; slug: string; status?: string }>) {
+    if (!backendShops || backendShops.length === 0) return;
+    backendShops.forEach((bShop) => {
+      const existingIndex = this.data.shops.findIndex((s) => s.id === bShop.id || s.slug === bShop.slug);
+      if (existingIndex >= 0) {
+        this.data.shops[existingIndex].id = bShop.id;
+        this.data.shops[existingIndex].name = bShop.name;
+        this.data.shops[existingIndex].slug = bShop.slug;
+      } else {
+        const newShop: Shop = {
+          id: bShop.id,
+          name: bShop.name,
+          slug: bShop.slug,
+          phone: '0908 123 456',
+          address: 'Hồ Chí Minh, Việt Nam',
+          plan: 'TRIAL',
+          trialEndsAt: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+          accentColor: '#713F4B',
+          logoUrl: '',
+          bannerUrl: '/images/demo/hero-fashion-rental.jpg',
+          description: 'Cửa hàng cho thuê áo dài & đầm dạ hội thiết kế cao cấp.',
+          depositHoldHours: 1,
+          allowLocalDelivery: true,
+        };
+        this.data.shops.unshift(newShop);
+      }
+    });
+    this.persist();
   }
 
   updateShopSettings(shopId: string, settings: Partial<Shop>) {
